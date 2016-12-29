@@ -16,7 +16,7 @@ class APIResponse:
 
     @property
     def yaml(self):
-        yaml.load(self.response.text)
+        return yaml.load(self.response.text)
 
 
 class API:
@@ -44,3 +44,7 @@ class API:
                 return API(url=self.url, path=new_path)
             else:
                 return API(url=self.url, path=[item])
+
+if __name__ == '__main__':
+    api = API('http://httpbin.org')
+    print api.post(method='post', data={'test': 'hi'})
