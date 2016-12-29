@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'restypy',
   packages = find_packages(), # this must be the same as the name above
-  version = '0.3',
+  version = '0.4',
   description = 'A Pythonic Rest API client',
   install_requires=[
         'PyYAML',

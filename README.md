@@ -2,6 +2,7 @@ Restypy
 =======
 
 Pythonic REST client
+
 The code interacting with the remote API reads just like standard Python!
 
 Restypy uses the awesome 'requests' library under the hood
@@ -16,9 +17,10 @@ Examples
 ========
 
     from restypy import API
-    api = API('https://api.github.com')
-    print api.users(url='simula67').events()
+    github = API('https://api.github.com')
+    # Hit : https://api.github.com/users/simula67/events
+    print github.users(url='simula67').events()
 
     # For HTTP methods other than GET, add a keyword argument 'method'. Rest of the arguments are passed to 'requests'
-    api = API('http://httpbin.org')
-    print api.post(method='post', data={'test': 'hi'})
+    httpbin = API('http://httpbin.org')
+    print httpbin.post(method='post', data={'test': 'hi'})

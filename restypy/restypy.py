@@ -46,5 +46,10 @@ class API:
                 return API(url=self.url, path=[item])
 
 if __name__ == '__main__':
-    api = API('http://httpbin.org')
-    print api.post(method='post', data={'test': 'hi'})
+    github = API('https://api.github.com')
+    # Hit : https://api.github.com/users/simula67/events
+    print github.users(url='simula67').events()
+
+    # For HTTP methods other than GET, add a keyword argument 'method'. Rest of the arguments are passed to 'requests'
+    httpbin = API('http://httpbin.org')
+    print httpbin.post(method='post', data={'test': 'hi'})
