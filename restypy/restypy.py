@@ -33,10 +33,7 @@ class API:
             return API(url=self.url, path=new_path)
         request_path = self.url + '/' + '/'.join(self.path)
         request_method = kwargs.pop('method', 'get')
-        if request_method == 'get':
-            r = getattr(requests, request_method, self)(request_path)
-        else:
-            r = getattr(requests, request_method, self)(request_path, args, kwargs)
+        r = getattr(requests, request_method, self)(request_path, *args, **kwargs)
         return APIResponse(r)
 
     def __getattr__(self, item):
