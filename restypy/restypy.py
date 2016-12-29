@@ -1,22 +1,4 @@
-import json
 import requests
-import yaml
-
-
-class APIResponse:
-    def __init__(self, response):
-        self.response = response
-
-    def __repr__(self):
-        return self.response.text
-
-    @property
-    def json(self):
-        return json.loads(self.response.text)
-
-    @property
-    def yaml(self):
-        return yaml.load(self.response.text)
 
 
 class API:
@@ -33,8 +15,7 @@ class API:
             return API(url=self.url, path=new_path)
         request_path = self.url + '/' + '/'.join(self.path)
         request_method = kwargs.pop('method', 'get')
-        r = getattr(requests, request_method, self)(request_path, *args, **kwargs)
-        return APIResponse(r)
+        return getattr(requests, request_method, self)(request_path, *args, **kwargs)
 
     def __getattr__(self, item):
         if item != 'path' and item != 'url':
