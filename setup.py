@@ -6,7 +6,7 @@ with open('README.rst') as file:
 setup(
   name='restypy',
   packages=find_packages(),
-  version='0.6',
+  version='0.7',
   description='A Pythonic Rest API client',
   long_description=long_description,
   install_requires=[

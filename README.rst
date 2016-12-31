@@ -16,7 +16,7 @@ This approach is shown in the following example.
 Examples
 ========
 
-.. highlight:: python
+.. code-block:: python
 
     from restypy import API
     github = API('https://api.github.com')
