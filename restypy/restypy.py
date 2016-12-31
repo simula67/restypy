@@ -9,9 +9,8 @@ class API:
             self.path = path
 
     def __call__(self, *args, **kwargs):
-        if 'url' in kwargs:
-            new_path = self.path[:]
-            new_path.append(kwargs.get('url'))
+        if 'path' in kwargs:
+            new_path = self.path + [kwargs['path']]
             return API(url=self.url, path=new_path)
         request_path = self.url + '/' + '/'.join(self.path)
         request_method = kwargs.pop('method', 'get')
@@ -20,17 +19,17 @@ class API:
     def __getattr__(self, item):
         if item != 'path' and item != 'url':
             if self.path is not None:
-                new_path = self.path[:]
-                new_path.append(item)
+                new_path = self.path + [item]
                 return API(url=self.url, path=new_path)
             else:
                 return API(url=self.url, path=[item])
 
 if __name__ == '__main__':
     github = API('https://api.github.com')
-    # Hit : https://api.github.com/users/simula67/events
-    print github.users(url='simula67').events()
-
+    # GET : https://api.github.com/users/simula67/events
+    response = github.users(path='simula67').events()
+    # Response is a simple 'requests' response
+    print response.json()
     # For HTTP methods other than GET, add a keyword argument 'method'. Rest of the arguments are passed to 'requests'
     httpbin = API('http://httpbin.org')
-    print httpbin.post(method='post', data={'test': 'hi'})
+    print httpbin.post(method='post', data={'test': 'hi'}).text
