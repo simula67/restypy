@@ -1,9 +1,14 @@
 from setuptools import setup, find_packages
+
+with open('README.md') as file:
+    long_description = file.read()
+
 setup(
   name='restypy',
   packages=find_packages(),
   version='0.5',
   description='A Pythonic Rest API client',
+  long_description=long_description,
   install_requires=[
         'requests'
   ],
