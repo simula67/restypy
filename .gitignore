@@ -211,6 +211,8 @@ modules.xml
 .idea/misc.xml
 # *.ipr
 
+# On second thought, avoid all Intellij files Joji
+.idea/*
 
 ### macOS ###
 *.DS_Store
