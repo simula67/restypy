@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
-with open('README.md') as file:
+with open('README.rst') as file:
     long_description = file.read()
 
 setup(
   name='restypy',
   packages=find_packages(),
-  version='0.5',
+  version='0.6',
   description='A Pythonic Rest API client',
   long_description=long_description,
   install_requires=[

@@ -16,6 +16,8 @@ This approach is shown in the following example.
 Examples
 ========
 
+.. highlight:: python
+
     from restypy import API
     github = API('https://api.github.com')
     # GET : https://api.github.com/users/simula67/events
